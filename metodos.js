@@ -104,17 +104,29 @@ function cerrarDetalle() {
 
 // Función NUEVA: Abrir la URL de la película en una nueva pestaña
 function abrirPelicula() {
-    // Se asume que el data-movie-url contiene una URL de YouTube que se puede abrir
-
     if (currentMovieUrl === 'SOLO EN CINES') {
         alert('Esta película se encuentra SOLO EN CINES actualmente.');
-        return;}
+        return;
+    }
+    
     if (currentMovieUrl) {
-        // Abre el enlace en una nueva pestaña
-        window.open(currentMovieUrl, '_blank');
-
-        // Opcional: Cerrar el modal
-        cerrarDetalle();
+        // 1. Ocultamos el contenedor del tráiler
+        document.getElementById('trailer-container').style.display = 'none';
+        
+        // 2. Mostramos el contenedor del reproductor de película
+        const playerContainer = document.getElementById('movie-player-container');
+        playerContainer.style.display = 'flex';
+        
+        // 3. Buscamos el iframe dentro del modal (puedes reusar el del tráiler o tener uno aparte)
+        const videoIframe = document.getElementById('modal-trailer-iframe');
+        
+        // 4. APLICAMOS EL BLOQUEO DE ANUNCIOS (Sandbox)
+        // allow-scripts y allow-same-origin permiten que el video cargue.
+        // Al NO poner allow-popups, el navegador bloquea las ventanas de publicidad.
+        videoIframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
+        
+        // 5. Cargamos la película
+        videoIframe.src = currentMovieUrl;
         
     } else {
         alert('Lo sentimos, aun no esta disponible la pelicula completa :´(');
@@ -127,6 +139,7 @@ document.getElementById('movie-modal').addEventListener('click', function (e) {
         cerrarDetalle();
     }
 })
+
 
 
 ;
