@@ -92,16 +92,12 @@ function cerrarDetalle() {
     const modal = document.getElementById('movie-modal');
     const trailerIframe = document.getElementById('modal-trailer-iframe');
 
-    // Pausar el tráiler
     trailerIframe.src = '';
+    // Quitamos el sandbox para que el siguiente video (tráiler) cargue normal
+    trailerIframe.removeAttribute("sandbox");
 
-    // Ocultar el modal
     modal.classList.remove('is-active');
-
-    // Habilitar el scroll del body principal
-    // document.body.style.overflow = 'auto';
 }
-
 // Función NUEVA: Abrir la URL de la película en una nueva pestaña
 function abrirPelicula() {
     if (currentMovieUrl === 'SOLO EN CINES') {
@@ -143,3 +139,4 @@ document.getElementById('movie-modal').addEventListener('click', function (e) {
 
 
 ;
+
