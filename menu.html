@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú - Cine Mexicano</title>
+    <link rel="stylesheet" href="estilos_cine.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div
+        class="logo-container"
+        onclick="parent.frames['contenido'].location.href = 'principal.html'"
+      >
+        <h1 class="logo-text">🇲🇽 CINE MEXICANO</h1>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="principal.html" target="contenido">INICIO</a></li>
+          <li>
+            <a href="contemporaneo.html" target="contenido"
+              >CINE CONTEMPORÁNEO</a
+            >
+          </li>
+          <li><a href="cine_oro.html" target="contenido">CINE DE ORO</a></li>
+          <li><a href="noticias.html" target="contenido">NOTICIAS</a></li>
+          <li>
+            <a href="#" onclick="prompt('Prototipo de búsqueda'); return false;"
+              >Buscar</a
+            >
+          </li>
+          <li><a href="contacto.html" target="contenido">CONTACTO</a></li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>
